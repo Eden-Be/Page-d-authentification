@@ -38,8 +38,9 @@
     
     document.getElementById('registerForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const email = document.getElementById('registerEmail').vast password = document.getElementById('registerPassword').value;lue;
-      con
+      const email = document.getElementById('registerEmail').value; 
+      const password = document.getElementById('registerPassword').value;
+      
 
       auth.createUserWithEmailAndPassword(email, password)
         .then(userCredential => {
