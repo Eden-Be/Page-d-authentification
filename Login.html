@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+</head>
+<body>
+  <h2>Se connecter</h2>
+
+  <form id="loginForm">
+    <input type="email" id="loginEmail" placeholder="Email" required><br><br>
+    <input type="password" id="loginPassword" placeholder="Mot de passe" required><br><br>
+    <button type="submit">Se connecter</button>
+  </form>
+
+  <p>Pas encore de compte ? <a href="register.html">Créer un compte</a></p>
+
+ 
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-auth-compat.js"></script>
+
+  
+  <script>
+  
+    const firebaseConfig = {
+  apiKey: "AIzaSyAJl1aYPEhSuJrxAC_Rdp05V8phXUPtBEY",
+  authDomain: "monappauthfirebase.firebaseapp.com",
+  projectId: "monappauthfirebase",
+  storageBucket: "monappauthfirebase.firebasestorage.app",
+  messagingSenderId: "440942443590",
+  appId: "1:440942443590:web:2c25695d8f6ba2ad7dde47",
+  measurementId: "G-LT09P8FK09"
+};
+
+   
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+ 
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          alert("Connexion réussie !");
+          window.location.href = "home.html"; 
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+    });
+  </script>
+</body>
+</html>
